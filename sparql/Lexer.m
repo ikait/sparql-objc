@@ -115,15 +115,30 @@
     return buf;
 }
 
+- (id)getURLLiteral {
+    if (![[self getCurrentChar] isEqualToString:@"<"]) return @"";
+    
+    NSMutableString *buf = [self getCurrentChar];
+    self.current_position++;
+    
+    [buf appendString:[self getTokenString:@">"]];
+    
+    [buf appendString:[self getCurrentChar]];
+    self.current_position++;
+    
+    return buf;
+}
+
 - (id)getTokenString:(id)delimiter {
-    id buf;
-    buf = [NSMutableString stringWithString:@""];
+    id buf = [NSMutableString stringWithString:@""];
     
     if ([self isCurrentCharDelimiter:delimiter]) {
         buf = [NSMutableString stringWithString:[self getCurrentChar]];
         self.current_position++;
     } else if ([[self getCurrentChar] isEqualToString:@"\""]) {
         buf = [NSMutableString stringWithString:[self getStringLiteral]];
+    } else if ([[self getCurrentChar] isEqualToString:@"<"]) {
+        buf = [NSMutableString stringWithString:[self getURLLiteral]];
     } else {
         while ([self hasNext] && ![self isCurrentCharDelimiter:delimiter]) {
             id c = [self getCurrentChar];
