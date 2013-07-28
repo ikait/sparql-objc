@@ -73,16 +73,19 @@
 }
 
 - (id)getCurrentChar {
-    //    return [self.query_string characterAtIndex:self.current_position];
-    return [self.query_string substringWithRange:NSMakeRange(current_position, 1)];
+    if (self.query_string.length > current_position) {
+        return [self.query_string substringWithRange:NSMakeRange(current_position, 1)];
+    } else {
+        return @"";
+    }
 }
 
 - (BOOL)isDelimiter:(id)character delimiter:(id)delimiter {
-    if ([delimiter isMemberOfClass: [NSString class]]) {
-        return character == delimiter;
-        //    } else if (delimiter != nil && ) {
-        //        return [delimiter rangeOfString:char] >= 0;
-        //    }
+    // Mutableも含めたいのでMemberOfでなくKindOf
+    if ([delimiter isKindOfClass: [NSString class]]) {  
+        return [character isEqualToString:delimiter];
+    } else if (delimiter != nil && [delimiter isKindOfClass: [NSArray class]]) {
+        return [delimiter indexOfObject:character] != NSNotFound;
     }
     return [self.DELIMITER indexOfObject:character] != NSNotFound;
 }
@@ -102,7 +105,7 @@
 - (id)getStringLiteral {
     if (![[self getCurrentChar] isEqualToString:@"\""]) return @"";
     
-    NSMutableString *buf = [self getCurrentChar];
+    NSMutableString *buf = [NSMutableString stringWithString:[self getCurrentChar]];
     self.current_position++;
     
     [buf appendString:[self getTokenString:@"\""]];
@@ -116,9 +119,11 @@
 }
 
 - (id)getURLLiteral {
-    if (![[self getCurrentChar] isEqualToString:@"<"]) return @"";
+    if (![[self getCurrentChar] isEqualToString:@"<"]) {
+        return @"";
+    }
     
-    NSMutableString *buf = [self getCurrentChar];
+    NSMutableString *buf = [NSMutableString stringWithString:[self getCurrentChar]];
     self.current_position++;
     
     [buf appendString:[self getTokenString:@">"]];
@@ -154,38 +159,62 @@
                    options:NSRegularExpressionSearch
          ].location != NSNotFound) {
         return NULL;
+        
     } else if ([str isEqualToString:@"{"]) {
-        return [[Token alloc] initWithString:str type:[NSNumber numberWithInt:OPEN_BRACKET]];
+        return [[Token alloc] initWithString:str
+                                        type:[NSNumber numberWithInt:OPEN_BRACKET]];
+        
     } else if ([str isEqualToString:@"}"]) {
-        return [[Token alloc] initWithString:str type:[NSNumber numberWithInt:CLOSE_BRACKET]];
+        return [[Token alloc] initWithString:str
+                                        type:[NSNumber numberWithInt:CLOSE_BRACKET]];
+        
     } else if ([str isEqualToString:@"("]) {
-        return [[Token alloc] initWithString:str type:[NSNumber numberWithInt:OPEN_PARENTHESIS]];
+        return [[Token alloc] initWithString:str
+                                        type:[NSNumber numberWithInt:OPEN_PARENTHESIS]];
+        
     } else if ([str isEqualToString:@")"]) {
-        return [[Token alloc] initWithString:str type:[NSNumber numberWithInt:CLOSE_PARENTHESIS]];
+        return [[Token alloc] initWithString:str
+                                        type:[NSNumber numberWithInt:CLOSE_PARENTHESIS]];
+        
     } else if ([str isEqualToString:@"."]) {
-        return [[Token alloc] initWithString:str type:[NSNumber numberWithInt:PERIOD]];
+        return [[Token alloc] initWithString:str
+                                        type:[NSNumber numberWithInt:PERIOD]];
+        
     } else if ([str isEqualToString:@";"]) {
-        return [[Token alloc] initWithString:str type:[NSNumber numberWithInt:SEMICOLON]];
+        return [[Token alloc] initWithString:str
+                                        type:[NSNumber numberWithInt:SEMICOLON]];
+        
     } else if ([[str substringToIndex:1] isEqualToString:@"<"]) {
-        return [[Token alloc] initWithString:str type:[NSNumber numberWithInt:URI]];
+        return [[Token alloc] initWithString:str
+                                        type:[NSNumber numberWithInt:URI]];
+        
     } else if ([[str substringToIndex:1] isEqualToString:@"?"]) {
-        return [[Token alloc] initWithString:str type:[NSNumber numberWithInt:VARIABLE]];
+        return [[Token alloc] initWithString:str
+                                        type:[NSNumber numberWithInt:VARIABLE]];
+        
     } else if ([str floatValue]) {
-        return [[Token alloc] initWithString:str type:[NSNumber numberWithInt:NUMBER]];
+        return [[Token alloc] initWithString:str
+                                        type:[NSNumber numberWithInt:NUMBER]];
+        
     } else if ([str rangeOfString:[NSString stringWithFormat:@"\"@"]
                           options:NSRegularExpressionSearch
                 ].location != NSNotFound) {
         return [[Token alloc] initWithString:str
                                         type:[NSNumber numberWithInt:STRING_WITH_LANGUAGE_TAG]];
+        
     } else if ([[str substringToIndex:1] isEqualToString:@"\""]) {
-        return [[Token alloc] initWithString:str type:[NSNumber numberWithInt:STRING]];
+        return [[Token alloc] initWithString:str
+                                        type:[NSNumber numberWithInt:STRING]];
+        
     } else {
-        return [[Token alloc] initWithString:str type:[NSNumber numberWithInt:SYMBOL]];
+        return [[Token alloc] initWithString:str
+                                        type:[NSNumber numberWithInt:SYMBOL]];
+        
     }
 }
 
 - (id)buildToken {
-    id str = [self getTokenString:@""];
+    id str = [self getTokenString:nil];
     return [self createToken:str];
 }
 
