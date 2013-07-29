@@ -18,32 +18,30 @@
     NSArray*        DELIMITER;
 }
 
-@property NSString *query_string;
+- (id)initWithQueryString:(NSString *)query;
+
+@property (readonly) NSString *query_string;
 @property NSMutableArray *tokens;
 @property NSUInteger current_position;
-@property NSArray* DELIMITER;
+@property (readonly) NSArray* DELIMITER;
 
-- (id)initWithQueryString:(NSString *)query;
 + (id)create:(id)query;
 + (id)analyze:(id)query;
 
-
-// - (NSArray *)startlex;
-
-/*
- - (id)preProcess;
- - (id)postProccess;
- - (id)process;
- - (BOOL)hasNext;
- - (char)getCurrentChar;
- - (BOOL)isDelimiter;
- - (BOOL)isCurrentCharDelimiter;
- - (NSString *)getLanguageTag;
- - (NSString *)getStringLiteral;
- - (NSString *)getTokenString;
- - (Token *)createToken;
- - (Token *)buildToken;
- - (Token *)addToken;
- */
+- (id)startlex;
+- (id)preProcess;
+- (id)postProccess;
+- (id)proccess;
+- (BOOL)hasNext;
+- (id)getCurrentChar;
+- (BOOL)isDelimiter:(id)character delimiter:(id)delimiter;
+- (BOOL)isCurrentCharDelimiter:(id)delimiter;
+- (id)getLanguageTag;
+- (id)getStringLiteral;
+- (id)getURLLiteral;
+- (id)getTokenString:(id)delimiter;
+- (id)createToken:(id)str;
+- (id)buildToken;
+- (id)addToken;
 
 @end

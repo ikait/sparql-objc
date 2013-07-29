@@ -10,13 +10,12 @@
 
 @implementation Lexer
 
-@synthesize query_string, tokens, current_position, DELIMITER;
 
 - (id)initWithQueryString:(NSString *)query {
     self = [super init];
     if (self != nil) {
-        self.query_string = query;
-        self.DELIMITER = @[@" ",
+        query_string = query;
+        DELIMITER = @[@" ",
                            @"\n",
                            @"{",
                            @"}",
@@ -26,6 +25,8 @@
     }
     return self;
 }
+
+@synthesize query_string, tokens, current_position, DELIMITER;
 
 + (id)create:(id)query {
     return [[Lexer alloc] initWithQueryString:query];
@@ -37,8 +38,8 @@
 }
 
 - (id)startlex {
-    if (self.tokens && [self.tokens count] > 0) {
-        return self.tokens;
+    if (tokens && [tokens count] > 0) {
+        return tokens;
     }
     [self preProcess];
     [self proccess];
@@ -48,18 +49,18 @@
 }
 
 - (id)preProcess {
-    self.current_position = 0;
-    self.tokens = [[NSMutableArray alloc] init];
+    current_position = 0;
+    tokens = [[NSMutableArray alloc] init];
     return self;
 }
 
 - (id)postProccess {
-    self.current_position = NSNotFound;
+    current_position = NSNotFound;
     return self;
 }
 
 - (id)proccess {
-    if (self.current_position == NSNotFound) {
+    if (current_position == NSNotFound) {
         [self preProcess];
     }
     while ([self hasNext]) {
@@ -69,12 +70,12 @@
 }
 
 - (BOOL)hasNext {
-    return self.current_position < [self.query_string length];
+    return current_position < [query_string length];
 }
 
 - (id)getCurrentChar {
-    if (self.query_string.length > current_position) {
-        return [self.query_string substringWithRange:NSMakeRange(current_position, 1)];
+    if (query_string.length > current_position) {
+        return [query_string substringWithRange:NSMakeRange(current_position, 1)];
     } else {
         return @"";
     }
@@ -87,7 +88,7 @@
     } else if (delimiter != nil && [delimiter isKindOfClass: [NSArray class]]) {
         return [delimiter indexOfObject:character] != NSNotFound;
     }
-    return [self.DELIMITER indexOfObject:character] != NSNotFound;
+    return [DELIMITER indexOfObject:character] != NSNotFound;
 }
 
 - (BOOL) isCurrentCharDelimiter:(id)delimiter {
@@ -97,7 +98,7 @@
 - (id) getLanguageTag {
     if (![[self getCurrentChar] isEqualToString:@"@"]) return @"";
     NSMutableString *buf = [self getCurrentChar];
-    self.current_position++;
+    current_position++;
     [buf appendString:[self getTokenString:@""]];
     return buf;
 }
@@ -106,12 +107,12 @@
     if (![[self getCurrentChar] isEqualToString:@"\""]) return @"";
     
     NSMutableString *buf = [NSMutableString stringWithString:[self getCurrentChar]];
-    self.current_position++;
+    current_position++;
     
     [buf appendString:[self getTokenString:@"\""]];
     
     [buf appendString:[self getCurrentChar]];
-    self.current_position++;
+    current_position++;
     
     [buf appendString:[self getLanguageTag]];
     
@@ -124,12 +125,12 @@
     }
     
     NSMutableString *buf = [NSMutableString stringWithString:[self getCurrentChar]];
-    self.current_position++;
+    current_position++;
     
     [buf appendString:[self getTokenString:@">"]];
     
     [buf appendString:[self getCurrentChar]];
-    self.current_position++;
+    current_position++;
     
     return buf;
 }
@@ -139,7 +140,7 @@
     
     if ([self isCurrentCharDelimiter:delimiter]) {
         buf = [NSMutableString stringWithString:[self getCurrentChar]];
-        self.current_position++;
+        current_position++;
     } else if ([[self getCurrentChar] isEqualToString:@"\""]) {
         buf = [NSMutableString stringWithString:[self getStringLiteral]];
     } else if ([[self getCurrentChar] isEqualToString:@"<"]) {
@@ -147,7 +148,7 @@
     } else {
         while ([self hasNext] && ![self isCurrentCharDelimiter:delimiter]) {
             id c = [self getCurrentChar];
-            self.current_position++;
+            current_position++;
             [buf appendString:c];
         }
     }
@@ -221,7 +222,7 @@
 - (id)addToken {
     id token = [self buildToken];
     if (token != nil) {
-        [self.tokens addObject:token];
+        [tokens addObject:token];
     }
     return self;
 }

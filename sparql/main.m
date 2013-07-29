@@ -17,6 +17,7 @@ void printToken(id tokens)
     printf("%s", "\n");
     for (; i < j; i += 1) {
         printf("\x1b[7m%3d \x1b[m ", i + 1);
+//        printf("%3d ", i + 1);
         printf("%s\n", [[[tokens objectAtIndex:i] toString] UTF8String]);
     }
     
@@ -33,6 +34,9 @@ int main(int argc, const char * argv[])
         while (fgets(buf, sizeof buf, stdin) != NULL) {
             [str appendString:[NSString stringWithCString:buf encoding:NSUTF8StringEncoding]];
         }
+        
+//        fgets(buf, sizeof(buf), stdin);
+//        [str appendString:[NSString stringWithCString:buf encoding:NSUTF8StringEncoding]];
         
         printf("%s", "\n\nToken:\n");
         printToken([Lexer analyze:str]);

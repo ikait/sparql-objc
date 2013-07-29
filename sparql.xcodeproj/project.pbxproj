@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A64F11417A508F600556285 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A64F11317A508F600556285 /* Parser.m */; };
 		5A89982B177A5A7D008326C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A89982A177A5A7D008326C4 /* Foundation.framework */; };
 		5A89982E177A5A7D008326C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A89982D177A5A7D008326C4 /* main.m */; };
 		5A899832177A5A7D008326C4 /* sparql.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5A899831177A5A7D008326C4 /* sparql.1 */; };
 		5A89983D177BB2E9008326C4 /* Token.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A89983C177BB2E9008326C4 /* Token.m */; };
 		5A899843177BC20A008326C4 /* Lexer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A899842177BC20A008326C4 /* Lexer.m */; };
-		5A899846177BC217008326C4 /* Sparql.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A899845177BC217008326C4 /* Sparql.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +29,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5A64F11217A508F600556285 /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
+		5A64F11317A508F600556285 /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
 		5A899827177A5A7D008326C4 /* sparql */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = sparql; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A89982A177A5A7D008326C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5A89982D177A5A7D008326C4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -38,8 +40,6 @@
 		5A89983C177BB2E9008326C4 /* Token.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Token.m; sourceTree = "<group>"; };
 		5A899841177BC20A008326C4 /* Lexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lexer.h; sourceTree = "<group>"; };
 		5A899842177BC20A008326C4 /* Lexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lexer.m; sourceTree = "<group>"; };
-		5A899844177BC217008326C4 /* Sparql.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sparql.h; sourceTree = "<group>"; };
-		5A899845177BC217008326C4 /* Sparql.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sparql.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,10 +85,10 @@
 				5A89982D177A5A7D008326C4 /* main.m */,
 				5A89983B177BB2E9008326C4 /* Token.h */,
 				5A89983C177BB2E9008326C4 /* Token.m */,
+				5A64F11217A508F600556285 /* Parser.h */,
+				5A64F11317A508F600556285 /* Parser.m */,
 				5A899841177BC20A008326C4 /* Lexer.h */,
 				5A899842177BC20A008326C4 /* Lexer.m */,
-				5A899844177BC217008326C4 /* Sparql.h */,
-				5A899845177BC217008326C4 /* Sparql.m */,
 				5A899831177A5A7D008326C4 /* sparql.1 */,
 				5A89982F177A5A7D008326C4 /* Supporting Files */,
 			);
@@ -157,7 +157,7 @@
 				5A89982E177A5A7D008326C4 /* main.m in Sources */,
 				5A89983D177BB2E9008326C4 /* Token.m in Sources */,
 				5A899843177BC20A008326C4 /* Lexer.m in Sources */,
-				5A899846177BC217008326C4 /* Sparql.m in Sources */,
+				5A64F11417A508F600556285 /* Parser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
