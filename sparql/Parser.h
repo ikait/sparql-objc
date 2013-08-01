@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Parser : NSObject
+@interface Parser : NSObject {
+}
+
+@property NSMutableArray *tokens;
+
+- (id)initWithTokens:(id)tokens;
+- (id)parseTokens;
 
 @end

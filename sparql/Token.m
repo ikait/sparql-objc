@@ -10,23 +10,23 @@
 
 @implementation Token
 
-@synthesize str, type;
+@synthesize query, type;
 
-- (id)initWithString:(NSString *)q type:(id)t {
+- (id)initWithQuery:(NSString *)initQuery type:(id)initType {
     self = [super init];
     if (self != nil) {
-        self.str = q;
-        self.type = t;
+        self.query = initQuery;
+        self.type = initType;
     }
     return self;
 }
 
 - (NSString *)toString {
-    return str;
+    return query;
 }
 
-- (BOOL)belongsTo:(id)t {
-    return [self.type isEqualToString:t];
+- (BOOL)belongsTo:(id)btype {
+    return [self.type isEqualTo:btype];
 }
 
 + (BOOL)isToken:(id)obj {

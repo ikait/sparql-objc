@@ -162,54 +162,54 @@
         return NULL;
         
     } else if ([str isEqualToString:@"{"]) {
-        return [[Token alloc] initWithString:str
-                                        type:[NSNumber numberWithInt:OPEN_BRACKET]];
+        return [[Token alloc] initWithQuery:str
+                                       type:[NSNumber numberWithInt:OPEN_BRACKET]];
         
     } else if ([str isEqualToString:@"}"]) {
-        return [[Token alloc] initWithString:str
-                                        type:[NSNumber numberWithInt:CLOSE_BRACKET]];
+        return [[Token alloc] initWithQuery:str
+                                       type:[NSNumber numberWithInt:CLOSE_BRACKET]];
         
     } else if ([str isEqualToString:@"("]) {
-        return [[Token alloc] initWithString:str
-                                        type:[NSNumber numberWithInt:OPEN_PARENTHESIS]];
+        return [[Token alloc] initWithQuery:str
+                                       type:[NSNumber numberWithInt:OPEN_PARENTHESIS]];
         
     } else if ([str isEqualToString:@")"]) {
-        return [[Token alloc] initWithString:str
-                                        type:[NSNumber numberWithInt:CLOSE_PARENTHESIS]];
+        return [[Token alloc] initWithQuery:str
+                                       type:[NSNumber numberWithInt:CLOSE_PARENTHESIS]];
         
     } else if ([str isEqualToString:@"."]) {
-        return [[Token alloc] initWithString:str
-                                        type:[NSNumber numberWithInt:PERIOD]];
+        return [[Token alloc] initWithQuery:str
+                                       type:[NSNumber numberWithInt:PERIOD]];
         
     } else if ([str isEqualToString:@";"]) {
-        return [[Token alloc] initWithString:str
-                                        type:[NSNumber numberWithInt:SEMICOLON]];
+        return [[Token alloc] initWithQuery:str
+                                       type:[NSNumber numberWithInt:SEMICOLON]];
         
     } else if ([[str substringToIndex:1] isEqualToString:@"<"]) {
-        return [[Token alloc] initWithString:str
-                                        type:[NSNumber numberWithInt:URI]];
+        return [[Token alloc] initWithQuery:str
+                                       type:[NSNumber numberWithInt:URI]];
         
     } else if ([[str substringToIndex:1] isEqualToString:@"?"]) {
-        return [[Token alloc] initWithString:str
-                                        type:[NSNumber numberWithInt:VARIABLE]];
+        return [[Token alloc] initWithQuery:str
+                                       type:[NSNumber numberWithInt:VARIABLE]];
         
     } else if ([str floatValue]) {
-        return [[Token alloc] initWithString:str
-                                        type:[NSNumber numberWithInt:NUMBER]];
+        return [[Token alloc] initWithQuery:str
+                                       type:[NSNumber numberWithInt:NUMBER]];
         
     } else if ([str rangeOfString:[NSString stringWithFormat:@"\"@"]
                           options:NSRegularExpressionSearch
                 ].location != NSNotFound) {
-        return [[Token alloc] initWithString:str
-                                        type:[NSNumber numberWithInt:STRING_WITH_LANGUAGE_TAG]];
+        return [[Token alloc] initWithQuery:str
+                                       type:[NSNumber numberWithInt:STRING_WITH_LANGUAGE_TAG]];
         
     } else if ([[str substringToIndex:1] isEqualToString:@"\""]) {
-        return [[Token alloc] initWithString:str
-                                        type:[NSNumber numberWithInt:STRING]];
+        return [[Token alloc] initWithQuery:str
+                                       type:[NSNumber numberWithInt:STRING]];
         
     } else {
-        return [[Token alloc] initWithString:str
-                                        type:[NSNumber numberWithInt:SYMBOL]];
+        return [[Token alloc] initWithQuery:str
+                                       type:[NSNumber numberWithInt:SYMBOL]];
         
     }
 }

@@ -8,11 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		5A64F11417A508F600556285 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A64F11317A508F600556285 /* Parser.m */; };
+		5A64F14117A9F0D300556285 /* Select.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A64F14017A9F0D300556285 /* Select.m */; };
+		5A64F14417A9F66E00556285 /* BasicGraphPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A64F14317A9F66E00556285 /* BasicGraphPattern.m */; };
 		5A89982B177A5A7D008326C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A89982A177A5A7D008326C4 /* Foundation.framework */; };
 		5A89982E177A5A7D008326C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A89982D177A5A7D008326C4 /* main.m */; };
 		5A899832177A5A7D008326C4 /* sparql.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5A899831177A5A7D008326C4 /* sparql.1 */; };
 		5A89983D177BB2E9008326C4 /* Token.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A89983C177BB2E9008326C4 /* Token.m */; };
 		5A899843177BC20A008326C4 /* Lexer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A899842177BC20A008326C4 /* Lexer.m */; };
+		5AA732C517A9FB96001FD7D1 /* Triple.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA732C417A9FB96001FD7D1 /* Triple.m */; };
+		5AA732C817A9FD44001FD7D1 /* Variable.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA732C717A9FD44001FD7D1 /* Variable.m */; };
+		5AA732CB17AA01A1001FD7D1 /* VariableList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA732CA17AA01A1001FD7D1 /* VariableList.m */; };
+		5AC6113B17AA27F3005A5EC7 /* GraphPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC6113A17AA27F3005A5EC7 /* GraphPattern.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +37,10 @@
 /* Begin PBXFileReference section */
 		5A64F11217A508F600556285 /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 		5A64F11317A508F600556285 /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
+		5A64F13F17A9F0D300556285 /* Select.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Select.h; sourceTree = "<group>"; };
+		5A64F14017A9F0D300556285 /* Select.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Select.m; sourceTree = "<group>"; };
+		5A64F14217A9F66E00556285 /* BasicGraphPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicGraphPattern.h; sourceTree = "<group>"; };
+		5A64F14317A9F66E00556285 /* BasicGraphPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicGraphPattern.m; sourceTree = "<group>"; };
 		5A899827177A5A7D008326C4 /* sparql */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = sparql; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A89982A177A5A7D008326C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5A89982D177A5A7D008326C4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +50,14 @@
 		5A89983C177BB2E9008326C4 /* Token.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Token.m; sourceTree = "<group>"; };
 		5A899841177BC20A008326C4 /* Lexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lexer.h; sourceTree = "<group>"; };
 		5A899842177BC20A008326C4 /* Lexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lexer.m; sourceTree = "<group>"; };
+		5AA732C317A9FB96001FD7D1 /* Triple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Triple.h; sourceTree = "<group>"; };
+		5AA732C417A9FB96001FD7D1 /* Triple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Triple.m; sourceTree = "<group>"; };
+		5AA732C617A9FD44001FD7D1 /* Variable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Variable.h; sourceTree = "<group>"; };
+		5AA732C717A9FD44001FD7D1 /* Variable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Variable.m; sourceTree = "<group>"; };
+		5AA732C917AA01A1001FD7D1 /* VariableList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariableList.h; sourceTree = "<group>"; };
+		5AA732CA17AA01A1001FD7D1 /* VariableList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariableList.m; sourceTree = "<group>"; };
+		5AC6113917AA27F3005A5EC7 /* GraphPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphPattern.h; sourceTree = "<group>"; };
+		5AC6113A17AA27F3005A5EC7 /* GraphPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphPattern.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +72,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A64F13E17A9F0B100556285 /* query */ = {
+			isa = PBXGroup;
+			children = (
+				5A64F13F17A9F0D300556285 /* Select.h */,
+				5A64F14017A9F0D300556285 /* Select.m */,
+				5A64F14217A9F66E00556285 /* BasicGraphPattern.h */,
+				5A64F14317A9F66E00556285 /* BasicGraphPattern.m */,
+				5AA732C617A9FD44001FD7D1 /* Variable.h */,
+				5AA732C717A9FD44001FD7D1 /* Variable.m */,
+				5AA732C917AA01A1001FD7D1 /* VariableList.h */,
+				5AA732CA17AA01A1001FD7D1 /* VariableList.m */,
+				5AC6113917AA27F3005A5EC7 /* GraphPattern.h */,
+				5AC6113A17AA27F3005A5EC7 /* GraphPattern.m */,
+				5AA732C317A9FB96001FD7D1 /* Triple.h */,
+				5AA732C417A9FB96001FD7D1 /* Triple.m */,
+			);
+			name = query;
+			sourceTree = "<group>";
+		};
 		5A89981E177A5A7D008326C4 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +124,7 @@
 				5A89983C177BB2E9008326C4 /* Token.m */,
 				5A64F11217A508F600556285 /* Parser.h */,
 				5A64F11317A508F600556285 /* Parser.m */,
+				5A64F13E17A9F0B100556285 /* query */,
 				5A899841177BC20A008326C4 /* Lexer.h */,
 				5A899842177BC20A008326C4 /* Lexer.m */,
 				5A899831177A5A7D008326C4 /* sparql.1 */,
@@ -158,6 +196,12 @@
 				5A89983D177BB2E9008326C4 /* Token.m in Sources */,
 				5A899843177BC20A008326C4 /* Lexer.m in Sources */,
 				5A64F11417A508F600556285 /* Parser.m in Sources */,
+				5A64F14117A9F0D300556285 /* Select.m in Sources */,
+				5A64F14417A9F66E00556285 /* BasicGraphPattern.m in Sources */,
+				5AA732C517A9FB96001FD7D1 /* Triple.m in Sources */,
+				5AA732C817A9FD44001FD7D1 /* Variable.m in Sources */,
+				5AA732CB17AA01A1001FD7D1 /* VariableList.m in Sources */,
+				5AC6113B17AA27F3005A5EC7 /* GraphPattern.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
