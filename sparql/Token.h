@@ -16,7 +16,7 @@
 - (id)initWithQuery:(NSString *)initQuery type:(id)initType;
 
 - (NSString *)toString;
-- (BOOL)belongsTo:(id)type;
+- (BOOL)belongsTo:(id)btype;
 + (BOOL)isToken:(id)obj;
 
 @end

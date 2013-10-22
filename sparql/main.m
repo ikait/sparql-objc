@@ -32,22 +32,23 @@ int main(int argc, const char * argv[])
         id parser;
         
         printf("%s", "\nSPARQL:\n");
-//        while (fgets(buf, sizeof buf, stdin) != NULL) {
-//            [str appendString:[NSString stringWithCString:buf encoding:NSUTF8StringEncoding]];
-//        }
         
-        fgets(buf, sizeof(buf), stdin);
-        [str appendString:[NSString stringWithCString:buf encoding:NSUTF8StringEncoding]];
+        // 複数行入力
+        while (fgets(buf, sizeof buf, stdin) != NULL) {
+            [str appendString:[NSString stringWithCString:buf encoding:NSUTF8StringEncoding]];
+        }
+        
+//        // 1行入力(テスト用)
+//        fgets(buf, sizeof(buf), stdin);
+//        [str appendString:[NSString stringWithCString:buf encoding:NSUTF8StringEncoding]];
         
         printf("%s", "\n\nToken:\n");
-        
         tokens = [Lexer analyze:str];
-        
         printToken(tokens);
         
-        parser = [[Parser alloc] initWithTokens:tokens];
-        id parse_tree = [parser parseTokens];
-        NSLog(@"%@", parse_tree);
+//        parser = [[Parser alloc] initWithTokens:tokens];
+//        id parse_tree = [parser parseTokens];
+//        NSLog(@"%@", parse_tree);
     }
     return 0;
 }
