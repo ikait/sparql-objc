@@ -9,37 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface GraphPattern : NSObject
-
+@property NSMutableArray *graphs;
+- (id)initWithTokens:(id)tokens;
+- (id)toString;
 @end
-
-/*
-define(["query/basic_graph_pattern"], function(BasicGraphPattern){
-	
-	function hasNext(){
-		return false; // XXXX
-	}
-	
-	function extractGraphs(tokens, list){
-		list = list || [];
-		list.push(new BasicGraphPattern(tokens));
-		if(hasNext(tokens)){
-			tokens.shift();
-			extractGraphs(tokens, list);
-		}
-		return list;
-	}
-	
-	var GraphPattern = function(tokens){
-		this.graphs = extractGraphs(tokens);
-	}
-	
-	GraphPattern.prototype = {
-    toString: function(){
-        return "(" + this.graphs.join(" ") + ")";
-    }
-	};
-	
-	return GraphPattern;
-	
-});
-*/

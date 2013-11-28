@@ -10,22 +10,21 @@
 
 @implementation Variable
 
-- (id)initWithToken:(id)t {
+- (id)initWithToken:(Token *)t {
     self = [super init];
-    
     token = t;
     
-    id str = [token string];
+    id str = [token toString];
     name = [str substringWithRange:NSMakeRange([str length] - 1, 1)];
     return self;
 }
 
-- (bool)isAnonymousVariable {
+- (BOOL)isAnonymousVariable {
     return [name length] == 0;
 }
 
 - (id)toString {
-    return [token string];
+    return [token toString];
 }
 
 @end

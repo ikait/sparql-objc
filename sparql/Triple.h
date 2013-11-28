@@ -18,25 +18,3 @@
 - (id)toString;
 
 @end
-
-/*
-define([], function(){
-	
-	var Triple = function(subject, predicate, object){
-		this.subject = subject;
-		this.predicate = predicate;
-		this.object = object;
-	};
-	
-	Triple.prototype = {
-    toString: function(){
-        return "(triple " + this.subject.toString() + " " +
-        this.predicate.toString() + " " +
-        this.object.toString() + ")";
-    }
-	};
-	
-	return Triple;
-	
-});
-*/

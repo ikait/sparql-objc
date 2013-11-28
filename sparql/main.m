@@ -12,12 +12,12 @@
 
 void printToken(id tokens)
 {
-    int i = 0;
     long j = [tokens count];
 
     printf("%s", "\n");
-    for (; i < j; i += 1) {
-        printf("\x1b[7m%3d \x1b[m ", i + 1);
+    for (int i = 0; i < j; i += 1) {
+//        printf("\x1b[7m%3d \x1b[m ", i + 1);
+        printf("%3d| ", i + 1);
         printf("%s\n", [[[tokens objectAtIndex:i] toString] UTF8String]);
     }
 }
@@ -33,22 +33,24 @@ int main(int argc, const char * argv[])
         
         printf("%s", "\nSPARQL:\n");
         
-        // 複数行入力
-        while (fgets(buf, sizeof buf, stdin) != NULL) {
-            [str appendString:[NSString stringWithCString:buf encoding:NSUTF8StringEncoding]];
-        }
+//        // 複数行入力
+//        while (fgets(buf, sizeof buf, stdin) != NULL) {
+//            [str appendString:[NSString stringWithCString:buf encoding:NSUTF8StringEncoding]];
+//        }
         
-//        // 1行入力(テスト用)
-//        fgets(buf, sizeof(buf), stdin);
-//        [str appendString:[NSString stringWithCString:buf encoding:NSUTF8StringEncoding]];
+        // 1行入力(デバッグ用)
+        fgets(buf, sizeof(buf), stdin);
+        [str appendString:[NSString stringWithCString:buf encoding:NSUTF8StringEncoding]];
         
+        //
         printf("%s", "\n\nToken:\n");
         tokens = [Lexer analyze:str];
         printToken(tokens);
         
-//        parser = [[Parser alloc] initWithTokens:tokens];
-//        id parse_tree = [parser parseTokens];
-//        NSLog(@"%@", parse_tree);
+        //
+        parser = [[Parser alloc] initWithTokens:tokens];
+        id parse_tree = [parser parseTokens];
+        NSLog(@"%@", parse_tree);
     }
     return 0;
 }

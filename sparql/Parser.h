@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Prefix.h"
 
-@interface Parser : NSObject {
-}
-
-@property NSMutableArray *tokens;
+@interface Parser : NSObject
+@property NSMutableArray *tokens, *tree;
 
 - (id)initWithTokens:(id)tokens;
 - (id)parseTokens;

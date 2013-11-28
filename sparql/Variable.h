@@ -7,34 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Token.h"
 
 @interface Variable : NSObject {
     id token;
     id name;
 }
 
-- (id)initWithToken:(id)t;
-- (bool)isAnonymousVariable;
+- (id)initWithToken:(Token *)t;
+- (BOOL)isAnonymousVariable;
 - (id)toString;
 
 @end
-
-/*
-define(["token"], function(Token){
-	
-	var Variable = function(token){
-		this.token = token;
-		this.name = token.string.substr(1, token.string.length -1);
-	};
-	Variable.prototype = {
-    isAnonymousVariable: function(){
-        return this.name.length === 0;
-    },
-    toString: function(){
-        return this.token.string;
-    }
-	};
-	
-	return Variable;
-});
-*/

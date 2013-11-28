@@ -12,7 +12,7 @@
 
 @synthesize query, type;
 
-- (id)initWithQuery:(NSString *)initQuery type:(id)initType {
+- (id)initWithQuery:(NSString *)initQuery type:(NSNumber *)initType {
     self = [super init];
     if (self != nil) {
         self.query = initQuery;

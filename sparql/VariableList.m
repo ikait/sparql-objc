@@ -9,7 +9,6 @@
 #import "VariableList.h"
 
 @implementation VariableList
-
 @synthesize list;
 
 - (id)initWithTokens:(id)tokens {
@@ -21,21 +20,20 @@
 }
 
 - (id)toString {
-    id elms = [list componentsJoinedByString:@","];
-    id str = [NSMutableString string];
-    [str appendString:@"("];
-    [str appendString:elms];
-    [str appendString:@")"];
-    return str;
+    return [NSMutableString stringWithFormat:
+            @"%@%@%@",
+            @"(",
+            [list componentsJoinedByString:@","],
+            @")"];
 }
 
 - (bool)isVariable:(id)token {
-    id firstCharacter = [[token string] substringWithRange:NSMakeRange(0, 1)];
-    return [firstCharacter isEqualToString:@"?"] || [firstCharacter isEqualToString:@"$"];
+    id str = [token toString];
+    return [str hasPrefix:@"?"] || [str hasPrefix:@"$"] || [str hasPrefix:@"*"];
 }
 
 - (bool)hasNext:(id)tokens {
-    return [tokens count] > 0 && [tokens objectAtIndex:0] && [[[tokens objectAtIndex:0] string] isEqualToString:@","];
+    return [tokens count] > 0 && [tokens objectAtIndex:0] && [self isVariable:[tokens objectAtIndex:0]];
 }
 
 - (id)createVariableList:(id)tokens List:(id)l {
@@ -45,7 +43,6 @@
             [variableList addObject:[[Variable alloc] initWithToken:[tokens objectAtIndex:0]]];
             [tokens removeObjectAtIndex:0];
             if ([self hasNext:tokens]) {
-                [tokens removeObjectAtIndex:0];
                 [self createVariableList:tokens List:variableList];
             }
         }

@@ -15,6 +15,9 @@
 		5A899832177A5A7D008326C4 /* sparql.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5A899831177A5A7D008326C4 /* sparql.1 */; };
 		5A89983D177BB2E9008326C4 /* Token.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A89983C177BB2E9008326C4 /* Token.m */; };
 		5A899843177BC20A008326C4 /* Lexer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A899842177BC20A008326C4 /* Lexer.m */; };
+		5AA33166184573A3000C9663 /* Prefix.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA33165184573A3000C9663 /* Prefix.m */; };
+		5AA3316918457800000C9663 /* Label.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA3316818457800000C9663 /* Label.m */; };
+		5AA3316C18457ABA000C9663 /* LabelList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA3316B18457ABA000C9663 /* LabelList.m */; };
 		5AA732C517A9FB96001FD7D1 /* Triple.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA732C417A9FB96001FD7D1 /* Triple.m */; };
 		5AA732C817A9FD44001FD7D1 /* Variable.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA732C717A9FD44001FD7D1 /* Variable.m */; };
 		5AA732CB17AA01A1001FD7D1 /* VariableList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA732CA17AA01A1001FD7D1 /* VariableList.m */; };
@@ -50,6 +53,12 @@
 		5A89983C177BB2E9008326C4 /* Token.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Token.m; sourceTree = "<group>"; };
 		5A899841177BC20A008326C4 /* Lexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lexer.h; sourceTree = "<group>"; };
 		5A899842177BC20A008326C4 /* Lexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lexer.m; sourceTree = "<group>"; };
+		5AA33164184573A3000C9663 /* Prefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.h; sourceTree = "<group>"; };
+		5AA33165184573A3000C9663 /* Prefix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Prefix.m; sourceTree = "<group>"; };
+		5AA3316718457800000C9663 /* Label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Label.h; sourceTree = "<group>"; };
+		5AA3316818457800000C9663 /* Label.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Label.m; sourceTree = "<group>"; };
+		5AA3316A18457ABA000C9663 /* LabelList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelList.h; sourceTree = "<group>"; };
+		5AA3316B18457ABA000C9663 /* LabelList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelList.m; sourceTree = "<group>"; };
 		5AA732C317A9FB96001FD7D1 /* Triple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Triple.h; sourceTree = "<group>"; };
 		5AA732C417A9FB96001FD7D1 /* Triple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Triple.m; sourceTree = "<group>"; };
 		5AA732C617A9FD44001FD7D1 /* Variable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Variable.h; sourceTree = "<group>"; };
@@ -77,6 +86,12 @@
 			children = (
 				5A64F13F17A9F0D300556285 /* Select.h */,
 				5A64F14017A9F0D300556285 /* Select.m */,
+				5AA33164184573A3000C9663 /* Prefix.h */,
+				5AA33165184573A3000C9663 /* Prefix.m */,
+				5AA3316718457800000C9663 /* Label.h */,
+				5AA3316818457800000C9663 /* Label.m */,
+				5AA3316A18457ABA000C9663 /* LabelList.h */,
+				5AA3316B18457ABA000C9663 /* LabelList.m */,
 				5A64F14217A9F66E00556285 /* BasicGraphPattern.h */,
 				5A64F14317A9F66E00556285 /* BasicGraphPattern.m */,
 				5AA732C617A9FD44001FD7D1 /* Variable.h */,
@@ -192,14 +207,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AA3316C18457ABA000C9663 /* LabelList.m in Sources */,
 				5A89982E177A5A7D008326C4 /* main.m in Sources */,
 				5A89983D177BB2E9008326C4 /* Token.m in Sources */,
 				5A899843177BC20A008326C4 /* Lexer.m in Sources */,
 				5A64F11417A508F600556285 /* Parser.m in Sources */,
 				5A64F14117A9F0D300556285 /* Select.m in Sources */,
 				5A64F14417A9F66E00556285 /* BasicGraphPattern.m in Sources */,
+				5AA3316918457800000C9663 /* Label.m in Sources */,
 				5AA732C517A9FB96001FD7D1 /* Triple.m in Sources */,
 				5AA732C817A9FD44001FD7D1 /* Variable.m in Sources */,
+				5AA33166184573A3000C9663 /* Prefix.m in Sources */,
 				5AA732CB17AA01A1001FD7D1 /* VariableList.m in Sources */,
 				5AC6113B17AA27F3005A5EC7 /* GraphPattern.m in Sources */,
 			);

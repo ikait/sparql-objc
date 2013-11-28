@@ -10,13 +10,13 @@
 #import "Select.h"
 
 @implementation Parser
-
-@synthesize tokens;
+@synthesize tokens, tree;
 
 - (id)initWithTokens:(id)initTokens {
     self = [super init];
     if (self != nil) {
-        self->tokens = [NSMutableArray arrayWithArray:initTokens];
+        tokens = [NSMutableArray arrayWithArray:initTokens];
+        tree = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -28,10 +28,17 @@
 - (id)query:(id)queryTokens {
     id token = [queryTokens objectAtIndex:0];
     [queryTokens removeObjectAtIndex:0];
-    if ([Select isSelectToken:token]) {
-        return [[Select alloc] initWithToken:token];
+    if ([Prefix isPrefixToken:token]) {
+        // treeが空か、prefixがすでに存在していない場合
+        if ([tree count] == 0 || ([tree count] > 0 && ![[tree objectAtIndex:0] isMemberOfClass:[Prefix class]])) {
+                [tree addObject:[[Prefix alloc] initWithTokens:[NSMutableArray arrayWithArray:queryTokens]]];
+        }
+    } else if ([Select isSelectToken:token]) {
+        [tree addObject:[[Select alloc] initWithTokens:[NSMutableArray arrayWithArray:queryTokens]]];
     }
-    return nil;
+    
+    if ([queryTokens count] > 0) [self query:queryTokens];
+    return tree;
 }
 
 @end

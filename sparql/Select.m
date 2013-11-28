@@ -7,19 +7,21 @@
 //
 
 #import "Select.h"
-#import "Token.h"
-#import "VariableList.h"
-#import "GraphPattern.h"
+
+//
+// 文法
+// http://www.asahi-net.or.jp/~ax2s-kmtn/internet/rdf/rdf-sparql-query.html#sparqlGrammar
+//
 
 @implementation Select
 
-+ (bool)isSelectToken:(id)token {
++ (BOOL)isSelectToken:(id)token {
     return [Token isToken:token] && [token belongsTo:[NSNumber numberWithInt:SYMBOL]] && [self testTokenString:token];
 }
 
-- (id)initWithToken:(id)tokens {
+- (id)initWithTokens:(id)tokens {
     self = [super init];
-    variables = [self extractGraphPatterns:tokens];
+    variables = [self extractVariable:tokens];
     if ([self hasWhereClause:tokens]) {
         [tokens removeObjectAtIndex:0];
         graphpatterns = [self extractGraphPatterns:tokens];
@@ -28,18 +30,17 @@
 };
 
 - (NSString *)toString {
-    id str = [NSMutableString stringWithString:@""];
-    [str appendString:@"(select "];
-    [str appendString:[variables toString]];
-    [str appendString:[graphpatterns toString]];
-    [str appendString:@")"];
-    return str;
+    return [NSMutableString stringWithFormat:@"%@%@%@%@",
+            @"(select ",
+            [variables toString],
+            [graphpatterns toString],
+            @")"];
 }
 
 
-+ (bool)testTokenString:(id)token {
-    id str = [token string];
-    return [str isEqualToString:@"string"];
++ (BOOL)testTokenString:(id)token {
+    id str = [[token toString] lowercaseString];
+    return [str isEqualToString:@"select"];
 }
 
 - (id)extractVariable:(id)tokens {
@@ -47,11 +48,13 @@
 }
 
 - (id)extractGraphPatterns:(id)tokens {
-    return [[GraphPattern alloc] init];
+    return [[GraphPattern alloc] initWithTokens:tokens];
 }
 
-- (bool)hasWhereClause:(id)tokens {
-    return [tokens count] > 0 && tokens != nil && [[[tokens objectAtIndex:0] string] isEqualToString:@"where"];
+- (BOOL)hasWhereClause:(id)tokens {
+    return [tokens count] > 0
+    && tokens != nil
+    && ([[[[tokens objectAtIndex:0] toString] lowercaseString] isEqualToString:@"where"] || [[[[tokens objectAtIndex:0] toString] lowercaseString] isEqualToString:@"{"]);
 }
 
 @end

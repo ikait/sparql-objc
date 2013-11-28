@@ -10,25 +10,24 @@
 
 @implementation Triple
 
-- (id)initWithSubject:(id)initSubject Predicate:(id)initPredicate Object:(id)initObject {
+- (id)initWithSubject:(id)s Predicate:(id)p Object:(id)o {
     self = [super init];
-    subject = initSubject;
-    predicate = initPredicate;
-    object = initObject;
+    subject = s;
+    predicate = p;
+    object = o;
     return self;
 }
 
 - (id)toString {
-    id str;
-    str = [NSMutableString stringWithString:@""];
-    [str appendString:@"(triple "];
-    [str appendString:[subject toString]];
-    [str appendString:@" "];
-    [str appendString:[predicate toString]];
-    [str appendString:@" "];
-    [str appendString:[object toString]];
-    [str appendString:@" "];
-    return str;
+    return [NSMutableString stringWithFormat:
+            @"%@%@%@%@%@%@%@",
+            @"(triple ",
+            [subject toString],
+            @" ",
+            [predicate toString],
+            @" ",
+            [object toString],
+            @")"];
 }
 
 @end
